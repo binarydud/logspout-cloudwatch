@@ -56,6 +56,16 @@ func (s *LogStreamSuite) TestNewStream(c *C) {
 	c.Assert(streams, HasLen, 1)
 }
 
+func (s *LogStreamSuite) TestNewStreamSubset(c *C) {
+	s.mock.AddStream("group", "stream1")
+
+	err := s.stream.Init()
+
+	c.Assert(err, IsNil)
+	c.Assert(s.stream.Token, IsNil)
+
+}
+
 func (s *LogStreamSuite) TestExistingStream(c *C) {
 	s.mock.AddStream("group", "stream")
 

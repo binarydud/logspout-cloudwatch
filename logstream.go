@@ -73,6 +73,10 @@ func (s *LogStream) findStream() (*cloudwatchlogs.LogStream, error) {
 		return nil, nil
 	}
 
+	if *resp.LogStreams[0].LogStreamName != *s.Stream {
+		return nil, nil
+	}
+
 	return resp.LogStreams[0], nil
 }
 
